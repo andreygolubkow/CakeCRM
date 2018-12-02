@@ -1,4 +1,5 @@
 ﻿using System;
+using CakeCRM.View;
 
 namespace CakeCRM.Model
 {
@@ -21,7 +22,7 @@ namespace CakeCRM.Model
 
         public override string ToString()
         {
-            return String.Format("{0} {1}", Name, Cost);
+            return String.Format("{0}[{1}] {2}{3}", Name,Pack.Name, Cost,Configuration.Currency);
         }
     }
 }

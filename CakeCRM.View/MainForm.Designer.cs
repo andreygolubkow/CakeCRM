@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.базаДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,16 +42,18 @@
             this.salesGroupBox = new System.Windows.Forms.GroupBox();
             this.salesGridView = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.saleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.newSellButton = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.goodsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.salesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@
             this.клиентыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(579, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(813, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -122,10 +124,10 @@
             this.salesGroupBox.Controls.Add(this.salesGridView);
             this.salesGroupBox.Location = new System.Drawing.Point(12, 27);
             this.salesGroupBox.Name = "salesGroupBox";
-            this.salesGroupBox.Size = new System.Drawing.Size(555, 147);
+            this.salesGroupBox.Size = new System.Drawing.Size(789, 290);
             this.salesGroupBox.TabIndex = 1;
             this.salesGroupBox.TabStop = false;
-            this.salesGroupBox.Text = "Продажи";
+            this.salesGroupBox.Text = "Заказы";
             // 
             // salesGridView
             // 
@@ -150,22 +152,29 @@
             this.salesGridView.ReadOnly = true;
             this.salesGridView.RowHeadersVisible = false;
             this.salesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.salesGridView.Size = new System.Drawing.Size(549, 128);
+            this.salesGridView.Size = new System.Drawing.Size(783, 271);
             this.salesGridView.TabIndex = 0;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.newSellButton);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 180);
+            this.groupBox2.Location = new System.Drawing.Point(0, 323);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(579, 100);
+            this.groupBox2.Size = new System.Drawing.Size(813, 54);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Продать";
+            this.groupBox2.Text = "Управление";
             // 
-            // saleBindingSource
+            // newSellButton
             // 
-            this.saleBindingSource.DataSource = typeof(CakeCRM.Model.Sale);
+            this.newSellButton.Location = new System.Drawing.Point(15, 19);
+            this.newSellButton.Name = "newSellButton";
+            this.newSellButton.Size = new System.Drawing.Size(116, 23);
+            this.newSellButton.TabIndex = 0;
+            this.newSellButton.Text = "Новый заказ";
+            this.newSellButton.UseVisualStyleBackColor = true;
+            this.newSellButton.Click += new System.EventHandler(this.newSellButton_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -185,8 +194,8 @@
             // goodsDataGridViewTextBoxColumn
             // 
             this.goodsDataGridViewTextBoxColumn.DataPropertyName = "Goods";
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.goodsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.goodsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.goodsDataGridViewTextBoxColumn.HeaderText = "Товары";
             this.goodsDataGridViewTextBoxColumn.Name = "goodsDataGridViewTextBoxColumn";
             this.goodsDataGridViewTextBoxColumn.ReadOnly = true;
@@ -212,11 +221,15 @@
             this.costDataGridViewTextBoxColumn.Name = "costDataGridViewTextBoxColumn";
             this.costDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // saleBindingSource
+            // 
+            this.saleBindingSource.DataSource = typeof(CakeCRM.Model.Sale);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 280);
+            this.ClientSize = new System.Drawing.Size(813, 377);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.salesGroupBox);
             this.Controls.Add(this.menuStrip1);
@@ -229,6 +242,7 @@
             this.menuStrip1.PerformLayout();
             this.salesGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -255,6 +269,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn costDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button newSellButton;
     }
 }
 

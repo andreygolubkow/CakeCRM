@@ -71,16 +71,22 @@ namespace CakeCRM.View
             sale1.Delivery = delivery;
             sale1.Client = client;
             sale1.DateTime = DateTime.Now;
-            sale1.Goods.Sells.Add(sellVariant1,2);
-            sale1.Goods.Sells.Add(sellVariant2,1);
+            sale1.Goods.Sells.Add(new SellCountPair(sellVariant1, 2));
+            sale1.Goods.Sells.Add(new SellCountPair(sellVariant2,1));
             _sales.Add(sale1);
-
+            
             var sale2 = new Sale();
             sale2.Delivery = delivery;
             sale2.Client = client;
             sale2.DateTime = DateTime.Now.AddDays(-1);
-            sale2.Goods.Sells.Add(sellVariant2, 2);
+            sale2.Goods.Sells.Add(new SellCountPair(sellVariant2, 2));
             _sales.Add(sale2);
+        }
+
+        private void newSellButton_Click(object sender, EventArgs e)
+        {
+            var form = new SaleForm(_sellVariants);
+            form.ShowDialog();
         }
     }
 }

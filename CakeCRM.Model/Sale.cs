@@ -12,7 +12,7 @@ namespace CakeCRM.Model
         /// <summary>
         /// Позиция-количество.
         /// </summary>
-        public SellCountPairs Goods { get; } = new SellCountPairs();
+        public SellCountCollection Goods { get; } = new SellCountCollection();
 
         public Delivery Delivery { get; set; }
 
@@ -25,7 +25,7 @@ namespace CakeCRM.Model
                 double cost = 0;
                 foreach (var position in Goods.Sells)
                 {
-                    cost += position.Key.Cost * position.Value;
+                    cost += position.Variant.Cost * position.Count;
                 }
 
                 if (Delivery != null)

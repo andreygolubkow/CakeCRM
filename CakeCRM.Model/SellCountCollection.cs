@@ -4,18 +4,18 @@ using System.Text;
 
 namespace CakeCRM.Model
 {
-    public class SellCountPairs
+    public class SellCountCollection
     {
         public int Id { get; set; }
 
-        public Dictionary<SellVariant, double> Sells { get; } = new Dictionary<SellVariant, double>();
+        public List<SellCountPair> Sells { get; } = new List<SellCountPair>();
         
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
             foreach (var sell in Sells)
             {
-                stringBuilder.AppendLine($"{sell.Key.Name}:{sell.Value}");
+                stringBuilder.AppendLine($"{sell.Variant.Name}:{sell.Count}");
             }
             return stringBuilder.ToString();
         }
