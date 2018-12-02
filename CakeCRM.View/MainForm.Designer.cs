@@ -1,6 +1,6 @@
 ﻿namespace CakeCRM.View
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
