@@ -48,12 +48,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientSaleDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientSaleDocument.Designer.cs">
+      <DependentUpon>ClientSaleDocument.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration.cs" />
+    <Compile Include="DeliveryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveryForm.Designer.cs">
+      <DependentUpon>DeliveryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackForm.Designer.cs">
+      <DependentUpon>PackForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm.Designer.cs">
+      <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,8 +87,32 @@
     <Compile Include="SaleForm.Designer.cs">
       <DependentUpon>SaleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SalesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesListForm.Designer.cs">
+      <DependentUpon>SalesListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleStatusForm.Designer.cs">
+      <DependentUpon>SaleStatusForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClientSaleDocument.resx">
+      <DependentUpon>ClientSaleDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryForm.resx">
+      <DependentUpon>DeliveryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackForm.resx">
+      <DependentUpon>PackForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm.resx">
+      <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,7 +126,17 @@
     <EmbeddedResource Include="SaleForm.resx">
       <DependentUpon>SaleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SalesListForm.resx">
+      <DependentUpon>SalesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleStatusForm.resx">
+      <DependentUpon>SaleStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\CakeCRM.Model.Delivery.datasource" />
+    <None Include="Properties\DataSources\CakeCRM.Model.Pack.datasource" />
+    <None Include="Properties\DataSources\CakeCRM.Model.Product.datasource" />
     <None Include="Properties\DataSources\CakeCRM.Model.Sale.datasource" />
+    <None Include="Properties\DataSources\CakeCRM.Model.SaleStatus.datasource" />
     <None Include="Properties\DataSources\CakeCRM.Model.SellCountPair.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -36,5 +36,7 @@ namespace CakeCRM.Model
                 return cost;
             }
         }
+
+        public SaleStatus Status { get; set; }
     }
 }

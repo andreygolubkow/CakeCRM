@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using CakeCRM.Model;
 
 namespace CakeCRM.View
@@ -19,6 +20,7 @@ namespace CakeCRM.View
         private List<Product> _products = new List<Product>();
         private List<Sale> _sales = new List<Sale>();
         private List<SellVariant> _sellVariants = new List<SellVariant>();
+        private List<SaleStatus> _statuses = new List<SaleStatus>();
 
 
         public MainForm()
@@ -30,6 +32,13 @@ namespace CakeCRM.View
 
         private void FillData()
         {
+            var status1 = new SaleStatus();
+            status1.Title = "Ожидание";
+            _statuses.Add(status1);
+            var status2 = new SaleStatus();
+            status2.Title = "Отправлен";
+            _statuses.Add(status2);
+
             var client = new Client();
             client.Address = "Иванова 10";
             client.Name = "Аркадий";
@@ -73,6 +82,7 @@ namespace CakeCRM.View
             sale1.DateTime = DateTime.Now;
             sale1.Goods.Sells.Add(new SellCountPair(sellVariant1, 2));
             sale1.Goods.Sells.Add(new SellCountPair(sellVariant2,1));
+            sale1.Status = status1;
             _sales.Add(sale1);
             
             var sale2 = new Sale();
@@ -80,6 +90,7 @@ namespace CakeCRM.View
             sale2.Client = client;
             sale2.DateTime = DateTime.Now.AddDays(-1);
             sale2.Goods.Sells.Add(new SellCountPair(sellVariant2, 2));
+            sale2.Status = status2;
             _sales.Add(sale2);
         }
 
@@ -87,6 +98,14 @@ namespace CakeCRM.View
         {
             var form = new SaleForm(_sellVariants);
             form.ShowDialog();
+            var detailForm = new ClientSaleDocument();
+            detailForm.Show();
+        }
+
+        private void salesDocumentButton_Click(object sender, EventArgs e)
+        {
+            var detailForm = new SalesListForm();
+            detailForm.ShowDialog();
         }
     }
 }
