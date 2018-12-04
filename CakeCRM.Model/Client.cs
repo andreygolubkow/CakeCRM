@@ -18,9 +18,9 @@ namespace CakeCRM.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Телефон.
+        /// Контакты.
         /// </summary>
-        public string PhoneNumber { get; set; }
+        public string Communications { get; set; }
 
         /// <summary>
         /// Адрес.
@@ -29,7 +29,7 @@ namespace CakeCRM.Model
 
         public override string ToString()
         {
-            return String.Format("{0} {1}->{2}",Name,PhoneNumber,Address);
+            return String.Format("{0} {1}->{2}",Name,Communications,Address);
         }
     }
 }

@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientSaleDocument.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,15 @@
     <Compile Include="SaleStatusForm.Designer.cs">
       <DependentUpon>SaleStatusForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SellVariantForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellVariantForm.Designer.cs">
+      <DependentUpon>SellVariantForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientSaleDocument.resx">
       <DependentUpon>ClientSaleDocument.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleStatusForm.resx">
       <DependentUpon>SaleStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellVariantForm.resx">
+      <DependentUpon>SellVariantForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\CakeCRM.Model.Delivery.datasource" />
     <None Include="Properties\DataSources\CakeCRM.Model.Pack.datasource" />

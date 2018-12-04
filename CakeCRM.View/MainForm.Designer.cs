@@ -42,22 +42,22 @@
             this.статусыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesGroupBox = new System.Windows.Forms.GroupBox();
             this.salesGridView = new System.Windows.Forms.DataGridView();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.salesDocumentButton = new System.Windows.Forms.Button();
+            this.newSellButton = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.goodsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.salesDocumentButton = new System.Windows.Forms.Button();
-            this.newSellButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.salesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -69,7 +69,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(813, 24);
             this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Text = "mainMenu";
             // 
             // базаДанныхToolStripMenuItem
             // 
@@ -166,6 +166,45 @@
             this.salesGridView.Size = new System.Drawing.Size(783, 271);
             this.salesGridView.TabIndex = 0;
             // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Статус";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.salesDocumentButton);
+            this.groupBox2.Controls.Add(this.newSellButton);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox2.Location = new System.Drawing.Point(0, 323);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(813, 54);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Управление";
+            // 
+            // salesDocumentButton
+            // 
+            this.salesDocumentButton.Location = new System.Drawing.Point(162, 19);
+            this.salesDocumentButton.Name = "salesDocumentButton";
+            this.salesDocumentButton.Size = new System.Drawing.Size(181, 23);
+            this.salesDocumentButton.TabIndex = 1;
+            this.salesDocumentButton.Text = "Сформировать список заказов";
+            this.salesDocumentButton.UseVisualStyleBackColor = true;
+            this.salesDocumentButton.Click += new System.EventHandler(this.salesDocumentButton_Click);
+            // 
+            // newSellButton
+            // 
+            this.newSellButton.Location = new System.Drawing.Point(15, 19);
+            this.newSellButton.Name = "newSellButton";
+            this.newSellButton.Size = new System.Drawing.Size(116, 23);
+            this.newSellButton.TabIndex = 0;
+            this.newSellButton.Text = "Новый заказ";
+            this.newSellButton.UseVisualStyleBackColor = true;
+            this.newSellButton.Click += new System.EventHandler(this.newSellButton_Click);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -211,48 +250,9 @@
             this.costDataGridViewTextBoxColumn.Name = "costDataGridViewTextBoxColumn";
             this.costDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Статус";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
             // saleBindingSource
             // 
             this.saleBindingSource.DataSource = typeof(CakeCRM.Model.Sale);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.salesDocumentButton);
-            this.groupBox2.Controls.Add(this.newSellButton);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 323);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(813, 54);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Управление";
-            // 
-            // salesDocumentButton
-            // 
-            this.salesDocumentButton.Location = new System.Drawing.Point(162, 19);
-            this.salesDocumentButton.Name = "salesDocumentButton";
-            this.salesDocumentButton.Size = new System.Drawing.Size(181, 23);
-            this.salesDocumentButton.TabIndex = 1;
-            this.salesDocumentButton.Text = "Сформировать список заказов";
-            this.salesDocumentButton.UseVisualStyleBackColor = true;
-            this.salesDocumentButton.Click += new System.EventHandler(this.salesDocumentButton_Click);
-            // 
-            // newSellButton
-            // 
-            this.newSellButton.Location = new System.Drawing.Point(15, 19);
-            this.newSellButton.Name = "newSellButton";
-            this.newSellButton.Size = new System.Drawing.Size(116, 23);
-            this.newSellButton.TabIndex = 0;
-            this.newSellButton.Text = "Новый заказ";
-            this.newSellButton.UseVisualStyleBackColor = true;
-            this.newSellButton.Click += new System.EventHandler(this.newSellButton_Click);
             // 
             // MainForm
             // 
@@ -271,8 +271,8 @@
             this.menuStrip1.PerformLayout();
             this.salesGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

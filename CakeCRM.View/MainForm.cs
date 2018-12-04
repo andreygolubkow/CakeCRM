@@ -42,7 +42,7 @@ namespace CakeCRM.View
             var client = new Client();
             client.Address = "Иванова 10";
             client.Name = "Аркадий";
-            client.PhoneNumber = "+7 998 965 67 55";
+            client.Communications = "+7 998 965 67 55";
             _clients.Add(client);
 
             var delivery = new Delivery();
