@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using CakeCRM.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace CakeCRM.View
 {
     public partial class MainForm : Form
     {
+        private readonly CakeContext _dbContext = new CakeContext();
+
         private List<Client> _clients = new List<Client>();
         private List<Delivery> _deliveries = new List<Delivery>();
         private List<Pack> _packs = new List<Pack>();
@@ -26,8 +29,20 @@ namespace CakeCRM.View
         public MainForm()
         {
             InitializeComponent();
-            FillData();
-            saleBindingSource.DataSource = _sales;
+            //FillData();
+            LoadData();
+        }
+
+        public void LoadData()
+        {
+            _dbContext.Sales.Load();
+            _dbContext.Clients.Load();
+            _dbContext.Deliveries.Load();
+            _dbContext.Packs.Load();
+            _dbContext.SellVariants.Load();
+            _dbContext.SaleStatuses.Load();
+            _dbContext.Products.Load();
+            saleBindingSource.DataSource = _dbContext.Sales.Local.ToObservableCollection();
         }
 
         private void FillData()
@@ -106,6 +121,17 @@ namespace CakeCRM.View
         {
             var detailForm = new SalesListForm();
             detailForm.ShowDialog();
+        }
+
+        /// <summary>
+        /// Вызывается при закрытии формы.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Закроем соединение с БД.
+            _dbContext.Dispose();
         }
     }
 }

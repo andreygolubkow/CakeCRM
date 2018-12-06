@@ -31,45 +31,45 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.базаДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.складToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.товарыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.упаковкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.доставкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.статусыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.витринаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.статусыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesGroupBox = new System.Windows.Forms.GroupBox();
             this.salesGridView = new System.Windows.Forms.DataGridView();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.salesDocumentButton = new System.Windows.Forms.Button();
-            this.newSellButton = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.goodsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.menuStrip1.SuspendLayout();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.salesDocumentButton = new System.Windows.Forms.Button();
+            this.newSellButton = new System.Windows.Forms.Button();
+            this.mainMenu.SuspendLayout();
             this.salesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView)).BeginInit();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // mainMenu
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.базаДанныхToolStripMenuItem,
             this.складToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(813, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "mainMenu";
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(813, 24);
+            this.mainMenu.TabIndex = 0;
+            this.mainMenu.Text = "mainMenu";
             // 
             // базаДанныхToolStripMenuItem
             // 
@@ -93,38 +93,38 @@
             // товарыToolStripMenuItem
             // 
             this.товарыToolStripMenuItem.Name = "товарыToolStripMenuItem";
-            this.товарыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.товарыToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.товарыToolStripMenuItem.Text = "Товары";
             // 
             // упаковкаToolStripMenuItem
             // 
             this.упаковкаToolStripMenuItem.Name = "упаковкаToolStripMenuItem";
-            this.упаковкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.упаковкаToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.упаковкаToolStripMenuItem.Text = "Тара";
             // 
             // доставкаToolStripMenuItem
             // 
             this.доставкаToolStripMenuItem.Name = "доставкаToolStripMenuItem";
-            this.доставкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.доставкаToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.доставкаToolStripMenuItem.Text = "Доставка";
+            // 
+            // статусыToolStripMenuItem
+            // 
+            this.статусыToolStripMenuItem.Name = "статусыToolStripMenuItem";
+            this.статусыToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.статусыToolStripMenuItem.Text = "Статусы";
             // 
             // витринаToolStripMenuItem
             // 
             this.витринаToolStripMenuItem.Name = "витринаToolStripMenuItem";
-            this.витринаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.витринаToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.витринаToolStripMenuItem.Text = "Витрина";
             // 
             // клиентыToolStripMenuItem
             // 
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
-            // 
-            // статусыToolStripMenuItem
-            // 
-            this.статусыToolStripMenuItem.Name = "статусыToolStripMenuItem";
-            this.статусыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.статусыToolStripMenuItem.Text = "Статусы";
             // 
             // salesGroupBox
             // 
@@ -165,45 +165,6 @@
             this.salesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.salesGridView.Size = new System.Drawing.Size(783, 271);
             this.salesGridView.TabIndex = 0;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Статус";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.salesDocumentButton);
-            this.groupBox2.Controls.Add(this.newSellButton);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 323);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(813, 54);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Управление";
-            // 
-            // salesDocumentButton
-            // 
-            this.salesDocumentButton.Location = new System.Drawing.Point(162, 19);
-            this.salesDocumentButton.Name = "salesDocumentButton";
-            this.salesDocumentButton.Size = new System.Drawing.Size(181, 23);
-            this.salesDocumentButton.TabIndex = 1;
-            this.salesDocumentButton.Text = "Сформировать список заказов";
-            this.salesDocumentButton.UseVisualStyleBackColor = true;
-            this.salesDocumentButton.Click += new System.EventHandler(this.salesDocumentButton_Click);
-            // 
-            // newSellButton
-            // 
-            this.newSellButton.Location = new System.Drawing.Point(15, 19);
-            this.newSellButton.Name = "newSellButton";
-            this.newSellButton.Size = new System.Drawing.Size(116, 23);
-            this.newSellButton.TabIndex = 0;
-            this.newSellButton.Text = "Новый заказ";
-            this.newSellButton.UseVisualStyleBackColor = true;
-            this.newSellButton.Click += new System.EventHandler(this.newSellButton_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -250,9 +211,48 @@
             this.costDataGridViewTextBoxColumn.Name = "costDataGridViewTextBoxColumn";
             this.costDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Статус";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
             // saleBindingSource
             // 
             this.saleBindingSource.DataSource = typeof(CakeCRM.Model.Sale);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.salesDocumentButton);
+            this.groupBox2.Controls.Add(this.newSellButton);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox2.Location = new System.Drawing.Point(0, 323);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(813, 54);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Управление";
+            // 
+            // salesDocumentButton
+            // 
+            this.salesDocumentButton.Location = new System.Drawing.Point(162, 19);
+            this.salesDocumentButton.Name = "salesDocumentButton";
+            this.salesDocumentButton.Size = new System.Drawing.Size(181, 23);
+            this.salesDocumentButton.TabIndex = 1;
+            this.salesDocumentButton.Text = "Сформировать список заказов";
+            this.salesDocumentButton.UseVisualStyleBackColor = true;
+            this.salesDocumentButton.Click += new System.EventHandler(this.salesDocumentButton_Click);
+            // 
+            // newSellButton
+            // 
+            this.newSellButton.Location = new System.Drawing.Point(15, 19);
+            this.newSellButton.Name = "newSellButton";
+            this.newSellButton.Size = new System.Drawing.Size(116, 23);
+            this.newSellButton.TabIndex = 0;
+            this.newSellButton.Text = "Новый заказ";
+            this.newSellButton.UseVisualStyleBackColor = true;
+            this.newSellButton.Click += new System.EventHandler(this.newSellButton_Click);
             // 
             // MainForm
             // 
@@ -261,18 +261,19 @@
             this.ClientSize = new System.Drawing.Size(813, 377);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.salesGroupBox);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.mainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.mainMenu;
             this.MinimumSize = new System.Drawing.Size(489, 319);
             this.Name = "MainForm";
             this.Text = "Заказы";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.salesGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,7 +281,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem базаДанныхToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem складToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem товарыToolStripMenuItem;
