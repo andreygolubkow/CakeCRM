@@ -30,15 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.packGridView = new System.Windows.Forms.DataGridView();
-            this.packBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.saveAsNewButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.countTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.removeButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.packGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.packBindingSource)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -49,20 +57,10 @@
             this.groupBox1.Controls.Add(this.packGridView);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 292);
+            this.groupBox1.Size = new System.Drawing.Size(352, 315);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Список";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Location = new System.Drawing.Point(351, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(256, 292);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Редактирование";
             // 
             // packGridView
             // 
@@ -86,12 +84,8 @@
             this.packGridView.ReadOnly = true;
             this.packGridView.RowHeadersVisible = false;
             this.packGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.packGridView.Size = new System.Drawing.Size(321, 267);
+            this.packGridView.Size = new System.Drawing.Size(340, 290);
             this.packGridView.TabIndex = 0;
-            // 
-            // packBindingSource
-            // 
-            this.packBindingSource.DataSource = typeof(CakeCRM.Model.Pack);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -116,11 +110,95 @@
             this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
             this.countDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // packBindingSource
+            // 
+            this.packBindingSource.DataSource = typeof(CakeCRM.Model.Pack);
+            this.packBindingSource.CurrentItemChanged += new System.EventHandler(this.packBindingSource_CurrentItemChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.removeButton);
+            this.groupBox2.Controls.Add(this.saveAsNewButton);
+            this.groupBox2.Controls.Add(this.saveButton);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.countTextBox);
+            this.groupBox2.Controls.Add(this.nameTextBox);
+            this.groupBox2.Location = new System.Drawing.Point(370, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(256, 110);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Редактирование";
+            // 
+            // saveAsNewButton
+            // 
+            this.saveAsNewButton.Location = new System.Drawing.Point(9, 75);
+            this.saveAsNewButton.Name = "saveAsNewButton";
+            this.saveAsNewButton.Size = new System.Drawing.Size(125, 23);
+            this.saveAsNewButton.TabIndex = 5;
+            this.saveAsNewButton.Text = "Сохранить как новый";
+            this.saveAsNewButton.UseVisualStyleBackColor = true;
+            this.saveAsNewButton.Click += new System.EventHandler(this.saveAsNewButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(171, 75);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 4;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Количество";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Наименование";
+            // 
+            // countTextBox
+            // 
+            this.countTextBox.Location = new System.Drawing.Point(95, 49);
+            this.countTextBox.Name = "countTextBox";
+            this.countTextBox.Size = new System.Drawing.Size(78, 20);
+            this.countTextBox.TabIndex = 1;
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Location = new System.Drawing.Point(95, 23);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(151, 20);
+            this.nameTextBox.TabIndex = 0;
+            // 
+            // removeButton
+            // 
+            this.removeButton.Location = new System.Drawing.Point(209, 46);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(37, 23);
+            this.removeButton.TabIndex = 6;
+            this.removeButton.Text = "X";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
             // PackForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 316);
+            this.ClientSize = new System.Drawing.Size(638, 339);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(635, 355);
@@ -129,6 +207,8 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.packGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.packBindingSource)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -142,5 +222,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource packBindingSource;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox countTextBox;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button saveAsNewButton;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button removeButton;
     }
 }

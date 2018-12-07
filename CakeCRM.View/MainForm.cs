@@ -42,7 +42,8 @@ namespace CakeCRM.View
             _dbContext.SellVariants.Load();
             _dbContext.SaleStatuses.Load();
             _dbContext.Products.Load();
-            saleBindingSource.DataSource = _dbContext.Sales.Local.ToObservableCollection();
+
+            saleBindingSource.DataSource = _dbContext.Sales.Local.ToBindingList();
         }
 
         private void FillData()
@@ -111,7 +112,9 @@ namespace CakeCRM.View
 
         private void newSellButton_Click(object sender, EventArgs e)
         {
-            var form = new SaleForm(_sellVariants);
+            var form = new SaleForm(_dbContext.SellVariants.Local.ToBindingList(),
+                                    _dbContext.Deliveries.Local.ToBindingList(),
+                                    _dbContext.Clients.Local.ToBindingList());
             form.ShowDialog();
             var detailForm = new ClientSaleDocument();
             detailForm.Show();
@@ -132,6 +135,25 @@ namespace CakeCRM.View
         {
             //Закроем соединение с БД.
             _dbContext.Dispose();
+        }
+
+        private void initializeDbToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void packToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new PackForm(_dbContext.Packs);
+            form.ShowDialog();
+            _dbContext.SaveChanges();
+        }
+
+        private void deliveryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new DeliveryForm(_dbContext.Deliveries);
+            form.ShowDialog();
+            _dbContext.SaveChanges();
         }
     }
 }

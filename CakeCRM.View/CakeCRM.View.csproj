@@ -260,6 +260,7 @@
     <Compile Include="DeliveryForm.Designer.cs">
       <DependentUpon>DeliveryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InitialData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -351,6 +352,7 @@
     <None Include="Properties\DataSources\CakeCRM.Model.Sale.datasource" />
     <None Include="Properties\DataSources\CakeCRM.Model.SaleStatus.datasource" />
     <None Include="Properties\DataSources\CakeCRM.Model.SellCountPair.datasource" />
+    <None Include="Properties\DataSources\CakeCRM.Model.SellVariant.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

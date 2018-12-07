@@ -13,14 +13,24 @@ namespace CakeCRM.View
 {
     public partial class SaleForm : Form
     {
-        private List<SellVariant> _sellVariants;
+        private readonly BindingList<SellVariant> _sellVariants;
+        private readonly BindingList<Delivery> _deliveries;
+        private readonly BindingList<Client> _clients;
 
-        public SaleForm(List<SellVariant> sellVariants)
+        public SaleForm(BindingList<SellVariant> sellVariants,
+                        BindingList<Delivery> deliveries,
+                        BindingList<Client> clients)
         {
             _sellVariants = sellVariants;
+            _deliveries = deliveries;
+            _clients = clients;
 
             InitializeComponent();
-            FillData();
+        }
+
+        public void ConnectSellVariants()
+        {
+
         }
 
         public void FillData()
