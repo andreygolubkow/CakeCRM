@@ -12,7 +12,7 @@ namespace CakeCRM.Model
         /// <summary>
         /// Позиция-количество.
         /// </summary>
-        public SellCountCollection Goods { get; } = new SellCountCollection();
+        public SellCountCollection Goods { get; set; } = new SellCountCollection();
 
         public Delivery Delivery { get; set; }
 

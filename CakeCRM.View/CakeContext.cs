@@ -27,6 +27,10 @@ namespace CakeCRM.View
 
         public DbSet<SellVariant> SellVariants { get; set; }
 
+        public DbSet<SellCountCollection> SellCountCollections { get; set; }
+
+        public DbSet<SellCountPair> SellCountPairs { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=Cake.sqlite");

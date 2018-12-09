@@ -36,13 +36,13 @@
             this.costDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.costTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.saveAsNewButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
+            this.saveAsNewButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.costTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deliveryGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deliveryBindingSource)).BeginInit();
@@ -80,6 +80,7 @@
             this.deliveryGridView.DataSource = this.deliveryBindingSource;
             this.deliveryGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.deliveryGridView.Location = new System.Drawing.Point(6, 19);
+            this.deliveryGridView.MultiSelect = false;
             this.deliveryGridView.Name = "deliveryGridView";
             this.deliveryGridView.ReadOnly = true;
             this.deliveryGridView.RowHeadersVisible = false;
@@ -132,47 +133,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Редактирование";
             // 
-            // label1
+            // removeButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Наименование";
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.Location = new System.Drawing.Point(95, 16);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(116, 20);
-            this.nameTextBox.TabIndex = 1;
-            // 
-            // costTextBox
-            // 
-            this.costTextBox.Location = new System.Drawing.Point(95, 42);
-            this.costTextBox.Name = "costTextBox";
-            this.costTextBox.Size = new System.Drawing.Size(72, 20);
-            this.costTextBox.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Стоимость";
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(142, 68);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(69, 23);
-            this.saveButton.TabIndex = 4;
-            this.saveButton.Text = "Сохранить";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.removeButton.Location = new System.Drawing.Point(190, 39);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(21, 23);
+            this.removeButton.TabIndex = 6;
+            this.removeButton.Text = "X";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // saveAsNewButton
             // 
@@ -184,15 +153,47 @@
             this.saveAsNewButton.UseVisualStyleBackColor = true;
             this.saveAsNewButton.Click += new System.EventHandler(this.saveAsNewButton_Click);
             // 
-            // removeButton
+            // saveButton
             // 
-            this.removeButton.Location = new System.Drawing.Point(190, 39);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(21, 23);
-            this.removeButton.TabIndex = 6;
-            this.removeButton.Text = "X";
-            this.removeButton.UseVisualStyleBackColor = true;
-            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            this.saveButton.Location = new System.Drawing.Point(142, 68);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(69, 23);
+            this.saveButton.TabIndex = 4;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Стоимость";
+            // 
+            // costTextBox
+            // 
+            this.costTextBox.Location = new System.Drawing.Point(95, 42);
+            this.costTextBox.Name = "costTextBox";
+            this.costTextBox.Size = new System.Drawing.Size(72, 20);
+            this.costTextBox.TabIndex = 2;
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Location = new System.Drawing.Point(95, 16);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(116, 20);
+            this.nameTextBox.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Наименование";
             // 
             // DeliveryForm
             // 

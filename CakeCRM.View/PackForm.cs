@@ -39,7 +39,7 @@ namespace CakeCRM.View
             if (!(packBindingSource.Current is Pack pack)) return;
             pack.Name = nameTextBox.Text;
             pack.Count = count;
-            _packs.Update(pack);
+            packBindingSource.EndEdit();
         }
 
         private void saveAsNewButton_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace CakeCRM.View
                 Name = nameTextBox.Text,
                 Count = count
             };
-            _packs.Add(pack);
+            packBindingSource.Add(pack);
         }
 
         private void removeButton_Click(object sender, EventArgs e)

@@ -36,13 +36,14 @@
             this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.removeButton = new System.Windows.Forms.Button();
             this.saveAsNewButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.countTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.removeButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.packGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.packBindingSource)).BeginInit();
@@ -80,6 +81,7 @@
             this.packGridView.DataSource = this.packBindingSource;
             this.packGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.packGridView.Location = new System.Drawing.Point(6, 19);
+            this.packGridView.MultiSelect = false;
             this.packGridView.Name = "packGridView";
             this.packGridView.ReadOnly = true;
             this.packGridView.RowHeadersVisible = false;
@@ -118,6 +120,7 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.removeButton);
             this.groupBox2.Controls.Add(this.saveAsNewButton);
             this.groupBox2.Controls.Add(this.saveButton);
@@ -131,6 +134,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Редактирование";
+            // 
+            // removeButton
+            // 
+            this.removeButton.Location = new System.Drawing.Point(209, 46);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(37, 23);
+            this.removeButton.TabIndex = 6;
+            this.removeButton.Text = "X";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // saveAsNewButton
             // 
@@ -174,7 +187,7 @@
             // 
             this.countTextBox.Location = new System.Drawing.Point(95, 49);
             this.countTextBox.Name = "countTextBox";
-            this.countTextBox.Size = new System.Drawing.Size(78, 20);
+            this.countTextBox.Size = new System.Drawing.Size(62, 20);
             this.countTextBox.TabIndex = 1;
             // 
             // nameTextBox
@@ -184,15 +197,14 @@
             this.nameTextBox.Size = new System.Drawing.Size(151, 20);
             this.nameTextBox.TabIndex = 0;
             // 
-            // removeButton
+            // label3
             // 
-            this.removeButton.Location = new System.Drawing.Point(209, 46);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(37, 23);
-            this.removeButton.TabIndex = 6;
-            this.removeButton.Text = "X";
-            this.removeButton.UseVisualStyleBackColor = true;
-            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(163, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "шт";
             // 
             // PackForm
             // 
@@ -229,5 +241,6 @@
         private System.Windows.Forms.Button saveAsNewButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Label label3;
     }
 }

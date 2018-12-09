@@ -8,41 +8,105 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CakeCRM.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace CakeCRM.View
 {
     public partial class SaleForm : Form
     {
-        private readonly BindingList<SellVariant> _sellVariants;
-        private readonly BindingList<Delivery> _deliveries;
-        private readonly BindingList<Client> _clients;
+        private Sale _sale;
 
-        public SaleForm(BindingList<SellVariant> sellVariants,
-                        BindingList<Delivery> deliveries,
-                        BindingList<Client> clients)
+        private DbSet<Client> _clients;
+        private List<SellCountPair> _sellCountPairs = new List<SellCountPair>();
+
+        public SaleForm(DbSet<SellVariant> sellVariants,
+                        DbSet<Delivery> deliveries,
+                        DbSet<Client> clients,
+                        DbSet<SaleStatus> statuses)
         {
-            _sellVariants = sellVariants;
-            _deliveries = deliveries;
-            _clients = clients;
-
             InitializeComponent();
+            _clients = clients;
+            clientBindingSource.DataSource = _clients.Local.ToBindingList();
+            deliveryBindingSource.DataSource = deliveries.Local.ToBindingList();
+            sellVariantBindingSource.DataSource = sellVariants.Local.ToBindingList();
+            saleStatusBindingSource.DataSource = statuses.Local.ToBindingList();
+            sellCountPairBindingSource.DataSource = _sellCountPairs;
+
+            
         }
 
-        public void ConnectSellVariants()
+        public Sale Sale
         {
-
-        }
-
-        public void FillData()
-        {
-            var pairs = new List<SellCountPair>();
-            var pair = new SellCountPair(_sellVariants.First(),2);
-            pairs.Add(pair);
-            sellCountPairBindingSource.DataSource = pairs;
+            get { return _sale; }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            double count = 0;
+            if (!(double.TryParse(countTextBox.Text, out count))) return;
+            if (!(sellVariantBindingSource.Current is SellVariant variant)) return;
+            if (variant.Product.Count < variant.ProductCount * count)
+            {
+
+                MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round(variant.Product.Count / variant.ProductCount - variant.Product.Count / variant.ProductCount % Math.Pow(10, 0))}");
+                return;
+            }
+
+            var pair = new SellCountPair(variant, count);
+            sellCountPairBindingSource.Add(pair);
+        }
+
+        private void addNewPairButton_Click(object sender, EventArgs e)
+        {
+            double count = 0;
+            if (!(double.TryParse(countTextBox.Text, out count))) return;
+            if (!(sellVariantBindingSource.Current is SellVariant variant)) return;
+            if (variant.Product.Count < variant.ProductCount*count)
+            {
+
+                MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round(variant.Product.Count / variant.ProductCount - variant.Product.Count / variant.ProductCount % Math.Pow(10, 0))}");
+                return;
+            }
+
+            var pair = new SellCountPair(variant,count);
+            sellCountPairBindingSource.Add(pair);
+        }
+
+        private void removePairButton_Click(object sender, EventArgs e)
+        {
+            sellCountPairBindingSource.RemoveCurrent();
+        }
+
+        private void contactsTextBox_Leave(object sender, EventArgs e)
+        {
+        }
+
+        private void addClientButton_Click(object sender, EventArgs e)
+        {
+            var clientForm = new ClientForm(_clients);
+            clientForm.ShowDialog();
+        }
+
+        private void saveSellButton_Click(object sender, EventArgs e)
+        {
+            if (!(clientBindingSource.Current is Client client)) return;
+            if (!(deliveryBindingSource.Current is Delivery delivery)) return;
+            if (!(saleStatusBindingSource.Current is SaleStatus status)) return;
+            if (_sellCountPairs.Count <=0) return;
+            try
+            {
+                _sale = new Sale();
+                _sale.Client = client;
+                _sale.DateTime = DateTime.Now;
+                _sale.Delivery = delivery;
+                _sale.Status = status;
+                _sale.Goods.Sells.AddRange(_sellCountPairs);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

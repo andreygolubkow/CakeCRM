@@ -32,16 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainMenu = new System.Windows.Forms.MenuStrip();
-            this.базаДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.initializeDbToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.складToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.товарыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.packToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deliveryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.статусыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.витринаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sellVariantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesGroupBox = new System.Windows.Forms.GroupBox();
             this.salesGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +62,6 @@
             // mainMenu
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.базаДанныхToolStripMenuItem,
             this.складToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
@@ -73,79 +69,60 @@
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "mainMenu";
             // 
-            // базаДанныхToolStripMenuItem
-            // 
-            this.базаДанныхToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem});
-            this.базаДанныхToolStripMenuItem.Name = "базаДанныхToolStripMenuItem";
-            this.базаДанныхToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.базаДанныхToolStripMenuItem.Text = "База данных";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.initializeDbToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.settingsToolStripMenuItem.Text = "Настройки";
-            // 
-            // initializeDbToolStripMenuItem
-            // 
-            this.initializeDbToolStripMenuItem.Name = "initializeDbToolStripMenuItem";
-            this.initializeDbToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.initializeDbToolStripMenuItem.Text = "Инициализировать";
-            this.initializeDbToolStripMenuItem.Click += new System.EventHandler(this.initializeDbToolStripMenuItem_Click);
-            // 
             // складToolStripMenuItem
             // 
             this.складToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.товарыToolStripMenuItem,
+            this.productToolStripMenuItem,
             this.packToolStripMenuItem,
             this.deliveryToolStripMenuItem,
-            this.статусыToolStripMenuItem,
-            this.витринаToolStripMenuItem,
-            this.клиентыToolStripMenuItem});
+            this.statusesToolStripMenuItem,
+            this.sellVariantToolStripMenuItem,
+            this.clientsToolStripMenuItem});
             this.складToolStripMenuItem.Name = "складToolStripMenuItem";
             this.складToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.складToolStripMenuItem.Text = "Каталог";
             // 
-            // товарыToolStripMenuItem
+            // productToolStripMenuItem
             // 
-            this.товарыToolStripMenuItem.Name = "товарыToolStripMenuItem";
-            this.товарыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.товарыToolStripMenuItem.Text = "Товары";
+            this.productToolStripMenuItem.Name = "productToolStripMenuItem";
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.productToolStripMenuItem.Text = "Товары";
+            this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
             // packToolStripMenuItem
             // 
             this.packToolStripMenuItem.Name = "packToolStripMenuItem";
-            this.packToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.packToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.packToolStripMenuItem.Text = "Тара";
             this.packToolStripMenuItem.Click += new System.EventHandler(this.packToolStripMenuItem_Click);
             // 
             // deliveryToolStripMenuItem
             // 
             this.deliveryToolStripMenuItem.Name = "deliveryToolStripMenuItem";
-            this.deliveryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deliveryToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.deliveryToolStripMenuItem.Text = "Доставка";
             this.deliveryToolStripMenuItem.Click += new System.EventHandler(this.deliveryToolStripMenuItem_Click);
             // 
-            // статусыToolStripMenuItem
+            // statusesToolStripMenuItem
             // 
-            this.статусыToolStripMenuItem.Name = "статусыToolStripMenuItem";
-            this.статусыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.статусыToolStripMenuItem.Text = "Статусы";
+            this.statusesToolStripMenuItem.Name = "statusesToolStripMenuItem";
+            this.statusesToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.statusesToolStripMenuItem.Text = "Статусы";
+            this.statusesToolStripMenuItem.Click += new System.EventHandler(this.statusesToolStripMenuItem_Click);
             // 
-            // витринаToolStripMenuItem
+            // sellVariantToolStripMenuItem
             // 
-            this.витринаToolStripMenuItem.Name = "витринаToolStripMenuItem";
-            this.витринаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.витринаToolStripMenuItem.Text = "Витрина";
+            this.sellVariantToolStripMenuItem.Name = "sellVariantToolStripMenuItem";
+            this.sellVariantToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.sellVariantToolStripMenuItem.Text = "Витрина";
+            this.sellVariantToolStripMenuItem.Click += new System.EventHandler(this.sellVariantToolStripMenuItem_Click);
             // 
-            // клиентыToolStripMenuItem
+            // clientsToolStripMenuItem
             // 
-            this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.клиентыToolStripMenuItem.Text = "Клиенты";
+            this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
+            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.clientsToolStripMenuItem.Text = "Клиенты";
+            this.clientsToolStripMenuItem.Click += new System.EventHandler(this.clientsToolStripMenuItem_Click);
             // 
             // salesGroupBox
             // 
@@ -180,6 +157,7 @@
             this.salesGridView.DataSource = this.saleBindingSource;
             this.salesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.salesGridView.Location = new System.Drawing.Point(3, 16);
+            this.salesGridView.MultiSelect = false;
             this.salesGridView.Name = "salesGridView";
             this.salesGridView.ReadOnly = true;
             this.salesGridView.RowHeadersVisible = false;
@@ -257,7 +235,7 @@
             // 
             // salesDocumentButton
             // 
-            this.salesDocumentButton.Location = new System.Drawing.Point(162, 19);
+            this.salesDocumentButton.Location = new System.Drawing.Point(620, 19);
             this.salesDocumentButton.Name = "salesDocumentButton";
             this.salesDocumentButton.Size = new System.Drawing.Size(181, 23);
             this.salesDocumentButton.TabIndex = 1;
@@ -267,7 +245,7 @@
             // 
             // newSellButton
             // 
-            this.newSellButton.Location = new System.Drawing.Point(15, 19);
+            this.newSellButton.Location = new System.Drawing.Point(12, 19);
             this.newSellButton.Name = "newSellButton";
             this.newSellButton.Size = new System.Drawing.Size(116, 23);
             this.newSellButton.TabIndex = 0;
@@ -303,19 +281,18 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip mainMenu;
-        private System.Windows.Forms.ToolStripMenuItem базаДанныхToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem складToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem товарыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem packToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deliveryToolStripMenuItem;
         private System.Windows.Forms.GroupBox salesGroupBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView salesGridView;
-        private System.Windows.Forms.ToolStripMenuItem витринаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sellVariantToolStripMenuItem;
         private System.Windows.Forms.BindingSource saleBindingSource;
         private System.Windows.Forms.Button newSellButton;
-        private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem статусыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem statusesToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn goodsDataGridViewTextBoxColumn;
@@ -324,8 +301,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.Button salesDocumentButton;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem initializeDbToolStripMenuItem;
     }
 }
 

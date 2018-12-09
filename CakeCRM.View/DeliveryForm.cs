@@ -14,13 +14,10 @@ namespace CakeCRM.View
 {
     public partial class DeliveryForm : Form
     {
-        private readonly DbSet<Delivery> _deliveries;
-
         public DeliveryForm(DbSet<Delivery> deliveries)
         {
             InitializeComponent();
-            _deliveries = deliveries;
-            deliveryBindingSource.DataSource = _deliveries.Local.ToBindingList();
+            deliveryBindingSource.DataSource = deliveries.Local.ToBindingList();
         }
 
         private void deliveryBindingSource_CurrentItemChanged(object sender, EventArgs e)
@@ -47,7 +44,7 @@ namespace CakeCRM.View
             if (!(deliveryBindingSource.Current is Delivery delivery)) return;
             delivery.Name = nameTextBox.Text;
             delivery.Cost = cost;
-            _deliveries.Update(delivery);
+            deliveryBindingSource.EndEdit();
         }
 
         private void saveAsNewButton_Click(object sender, EventArgs e)
@@ -55,7 +52,7 @@ namespace CakeCRM.View
             double cost = 0;
             if (nameTextBox.Text.Length <= 0 || !Double.TryParse(costTextBox.Text, out cost)) return;
             var delivery = new Delivery {Name = nameTextBox.Text, Cost = cost};
-            _deliveries.Add(delivery);
+            deliveryBindingSource.Add(delivery);
         }
     }
 }
