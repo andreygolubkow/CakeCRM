@@ -12,9 +12,10 @@ namespace CakeCRM.View
 {
     public partial class ClientSaleDocument : Form
     {
-        public ClientSaleDocument()
+        public ClientSaleDocument(string text)
         {
             InitializeComponent();
+            textBox.Text = text;
         }
     }
 }

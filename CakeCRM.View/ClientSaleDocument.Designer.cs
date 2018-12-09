@@ -28,26 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 275);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "По заказу:\r\n1) ПИРОЖНОЕ ТОПОВОЕ С ГУСТОЙ НАЧИНКОЙ\r\n150 г. - 110 руб.\r\n2) ПИРОЖНОЕ" +
-    " БАРХАТНОЕ\r\n300 г. - 240 руб \r\nДоставка: Самовывоз (0 руб.)\r\nИтого: 350 руб.\r\n-=" +
-    "Спасибо!=-";
+            this.textBox.Location = new System.Drawing.Point(12, 12);
+            this.textBox.Multiline = true;
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(254, 275);
+            this.textBox.TabIndex = 0;
             // 
             // ClientSaleDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(274, 299);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -60,6 +57,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox;
     }
 }

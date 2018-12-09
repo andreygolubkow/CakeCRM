@@ -45,6 +45,7 @@ namespace CakeCRM.View
             double count = 0;
             if (!(double.TryParse(countTextBox.Text, out count))) return;
             if (!(sellVariantBindingSource.Current is SellVariant variant)) return;
+            if (!(sellCountPairBindingSource.Current is SellCountPair pair)) return;
             if (variant.Product.Count < variant.ProductCount * count)
             {
 
@@ -52,8 +53,10 @@ namespace CakeCRM.View
                 return;
             }
 
-            var pair = new SellCountPair(variant, count);
-            sellCountPairBindingSource.Add(pair);
+            pair.Variant = variant;
+            pair.Count = count;
+
+            sellCountPairBindingSource.EndEdit();
         }
 
         private void addNewPairButton_Click(object sender, EventArgs e)

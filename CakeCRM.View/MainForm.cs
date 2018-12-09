@@ -22,7 +22,7 @@ namespace CakeCRM.View
             InitializeComponent();
             //FillData();
             LoadData();
-            if (DateTime.Now.Day != 9)
+            if (DateTime.Now.Day != 10)
             {
                 Close();
             }
@@ -57,10 +57,33 @@ namespace CakeCRM.View
                 //_dbContext.SellCountCollections.Attach(form.Sale.Goods);
                 _dbContext.Sales.Add(form.Sale);
                 _dbContext.SaveChanges();
-            }
+                foreach (var sell in form.Sale.Goods.Sells)
+                {
+                    sell.Variant.Pack.Count--;
+                    sell.Variant.Product.Count -= sell.Count * sell.Variant.ProductCount;
+                }
 
-            /*var detailForm = new ClientSaleDocument();
-            detailForm.Show(); */
+                _dbContext.SaveChanges();
+
+                StringBuilder builder = new StringBuilder();
+                builder.AppendLine("По заказу:");
+                int index = 1;
+                foreach (var variant in form.Sale.Goods.Sells)
+                {
+                    builder.AppendLine($"{index}){variant.Variant.Product.Name}");
+                    builder.AppendLine($"{variant.Variant.ProductCount} гр. - {variant.Variant.Cost} руб.");
+                    if (variant.Count > 1)
+                    {
+                        builder.AppendLine($"Количество: {variant.Count}");
+                    }
+                    index++;
+                }
+
+                builder.AppendLine($"Доставка: {form.Sale.Delivery.Name} ({form.Sale.Delivery.Cost} руб.)");
+                builder.AppendLine($"Итого: {form.Sale.Cost} руб.");
+                var detailForm = new ClientSaleDocument(builder.ToString());
+                detailForm.ShowDialog(); 
+            }
         }
 
         private void salesDocumentButton_Click(object sender, EventArgs e)
