@@ -1,9 +1,11 @@
-﻿namespace CakeCRM.Model
+﻿using System;
+
+namespace CakeCRM.Model
 {
     /// <summary>
     /// Упаковка.
     /// </summary>
-    public class Pack
+    public class Pack : IComparable
     {
         /// <summary>
         /// Идентификатор.
@@ -23,6 +25,16 @@
         public override string ToString()
         {
             return Name;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Pack pack)
+            {
+                return Id.CompareTo(pack.Id);
+            }
+
+            throw new Exception("Нельзя сравнить два объекта.");
         }
     }
 }

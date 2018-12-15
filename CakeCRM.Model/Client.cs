@@ -5,7 +5,7 @@ namespace CakeCRM.Model
     /// <summary>
     /// Клиент.
     /// </summary>
-    public class Client
+    public class Client : IComparable
     {
         /// <summary>
         /// Идентификатор.
@@ -35,6 +35,16 @@ namespace CakeCRM.Model
         public override string ToString()
         {
             return String.Format("{0} {1}->{2}",Name,Communications,Address);
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Client client)
+            {
+                return String.Compare(ToString(), client.ToString(), StringComparison.CurrentCulture);
+            }
+
+            throw new Exception("Нельзя сравнить два объекта.");
         }
     }
 }

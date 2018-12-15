@@ -276,6 +276,12 @@
       <DependentUpon>DeliveryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InitialData.cs" />
+    <Compile Include="ListByStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListByStatusForm.Designer.cs">
+      <DependentUpon>ListByStatusForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeliveryForm.resx">
       <DependentUpon>DeliveryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListByStatusForm.resx">
+      <DependentUpon>ListByStatusForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

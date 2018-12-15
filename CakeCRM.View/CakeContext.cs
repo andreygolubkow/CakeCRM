@@ -36,5 +36,24 @@ namespace CakeCRM.View
             optionsBuilder.UseSqlite("Data Source=Cake.sqlite");
         }
 
+        public void UndoChanges()
+        {
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Modified:
+                        entry.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Deleted:
+                        entry.Reload();
+                        break;
+                    case EntityState.Added:
+                        entry.State = EntityState.Detached;
+                        break;
+                }
+            }
+        }
+
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CakeCRM.Model
 {
-    public class Sale
+    public class Sale : IComparable
     {
         public int Id { get; set; }
         
@@ -38,5 +38,15 @@ namespace CakeCRM.Model
         }
 
         public SaleStatus Status { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Sale sale)
+            {
+                return Id.CompareTo(sale.Id);
+            }
+
+            throw new Exception("Нельзя сравнить два объекта.");
+        }
     }
 }

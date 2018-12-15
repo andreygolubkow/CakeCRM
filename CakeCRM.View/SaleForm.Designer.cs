@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.sellCountGridView = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.variantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sellCountPairBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.commentLabel = new System.Windows.Forms.Label();
@@ -41,22 +44,20 @@
             this.deliveryComboBox = new System.Windows.Forms.ComboBox();
             this.deliveryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.removePairButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.addNewPairButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.countTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.sellVariantComboBox = new System.Windows.Forms.ComboBox();
             this.sellVariantBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveSellButton = new System.Windows.Forms.Button();
-            this.removePairButton = new System.Windows.Forms.Button();
-            this.addNewPairButton = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.saleStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorLabel = new System.Windows.Forms.Label();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.variantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.applyButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sellCountGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sellCountPairBindingSource)).BeginInit();
@@ -103,9 +104,35 @@
             this.sellCountGridView.Size = new System.Drawing.Size(333, 225);
             this.sellCountGridView.TabIndex = 0;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 2;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // variantDataGridViewTextBoxColumn
+            // 
+            this.variantDataGridViewTextBoxColumn.DataPropertyName = "Variant";
+            this.variantDataGridViewTextBoxColumn.FillWeight = 159.3909F;
+            this.variantDataGridViewTextBoxColumn.HeaderText = "Товар";
+            this.variantDataGridViewTextBoxColumn.Name = "variantDataGridViewTextBoxColumn";
+            this.variantDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countDataGridViewTextBoxColumn
+            // 
+            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
+            this.countDataGridViewTextBoxColumn.FillWeight = 40.60914F;
+            this.countDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
+            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // sellCountPairBindingSource
             // 
             this.sellCountPairBindingSource.DataSource = typeof(CakeCRM.Model.SellCountPair);
+            this.sellCountPairBindingSource.CurrentChanged += new System.EventHandler(this.sellCountPairBindingSource_CurrentChanged);
             // 
             // groupBox2
             // 
@@ -194,6 +221,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Редактировать позицию";
             // 
+            // removePairButton
+            // 
+            this.removePairButton.Location = new System.Drawing.Point(553, 47);
+            this.removePairButton.Name = "removePairButton";
+            this.removePairButton.Size = new System.Drawing.Size(21, 23);
+            this.removePairButton.TabIndex = 6;
+            this.removePairButton.Text = "X";
+            this.removePairButton.UseVisualStyleBackColor = true;
+            this.removePairButton.Click += new System.EventHandler(this.removePairButton_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -202,6 +239,16 @@
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "шт. ";
+            // 
+            // addNewPairButton
+            // 
+            this.addNewPairButton.Location = new System.Drawing.Point(311, 47);
+            this.addNewPairButton.Name = "addNewPairButton";
+            this.addNewPairButton.Size = new System.Drawing.Size(133, 23);
+            this.addNewPairButton.TabIndex = 5;
+            this.addNewPairButton.Text = "Сохранить как новый";
+            this.addNewPairButton.UseVisualStyleBackColor = true;
+            this.addNewPairButton.Click += new System.EventHandler(this.addNewPairButton_Click);
             // 
             // saveButton
             // 
@@ -215,7 +262,6 @@
             // 
             // countTextBox
             // 
-            this.countTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sellCountPairBindingSource, "Count", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "N0"));
             this.countTextBox.Location = new System.Drawing.Point(78, 49);
             this.countTextBox.Name = "countTextBox";
             this.countTextBox.Size = new System.Drawing.Size(100, 20);
@@ -232,8 +278,6 @@
             // 
             // sellVariantComboBox
             // 
-            this.sellVariantComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sellCountPairBindingSource, "Variant", true));
-            this.sellVariantComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.sellCountPairBindingSource, "Variant", true));
             this.sellVariantComboBox.DataSource = this.sellVariantBindingSource;
             this.sellVariantComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sellVariantComboBox.FormattingEnabled = true;
@@ -255,26 +299,6 @@
             this.saveSellButton.Text = "Сохранить заказ";
             this.saveSellButton.UseVisualStyleBackColor = true;
             this.saveSellButton.Click += new System.EventHandler(this.saveSellButton_Click);
-            // 
-            // removePairButton
-            // 
-            this.removePairButton.Location = new System.Drawing.Point(553, 47);
-            this.removePairButton.Name = "removePairButton";
-            this.removePairButton.Size = new System.Drawing.Size(21, 23);
-            this.removePairButton.TabIndex = 6;
-            this.removePairButton.Text = "X";
-            this.removePairButton.UseVisualStyleBackColor = true;
-            this.removePairButton.Click += new System.EventHandler(this.removePairButton_Click);
-            // 
-            // addNewPairButton
-            // 
-            this.addNewPairButton.Location = new System.Drawing.Point(311, 47);
-            this.addNewPairButton.Name = "addNewPairButton";
-            this.addNewPairButton.Size = new System.Drawing.Size(133, 23);
-            this.addNewPairButton.TabIndex = 5;
-            this.addNewPairButton.Text = "Сохранить как новый";
-            this.addNewPairButton.UseVisualStyleBackColor = true;
-            this.addNewPairButton.Click += new System.EventHandler(this.addNewPairButton_Click);
             // 
             // groupBox6
             // 
@@ -310,36 +334,23 @@
             this.errorLabel.TabIndex = 9;
             this.errorLabel.Text = "                  ";
             // 
-            // idDataGridViewTextBoxColumn
+            // applyButton
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 2;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // variantDataGridViewTextBoxColumn
-            // 
-            this.variantDataGridViewTextBoxColumn.DataPropertyName = "Variant";
-            this.variantDataGridViewTextBoxColumn.FillWeight = 159.3909F;
-            this.variantDataGridViewTextBoxColumn.HeaderText = "Товар";
-            this.variantDataGridViewTextBoxColumn.Name = "variantDataGridViewTextBoxColumn";
-            this.variantDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countDataGridViewTextBoxColumn
-            // 
-            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
-            this.countDataGridViewTextBoxColumn.FillWeight = 40.60914F;
-            this.countDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
-            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            this.applyButton.Location = new System.Drawing.Point(403, 353);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(75, 23);
+            this.applyButton.TabIndex = 10;
+            this.applyButton.Text = "Применить";
+            this.applyButton.UseVisualStyleBackColor = true;
+            this.applyButton.Visible = false;
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
             // SaleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 385);
+            this.Controls.Add(this.applyButton);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.saveSellButton);
@@ -401,5 +412,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn variantDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button applyButton;
     }
 }

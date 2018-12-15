@@ -5,7 +5,7 @@ namespace CakeCRM.Model
     /// <summary>
     /// Доставка.
     /// </summary>
-    public class Delivery
+    public class Delivery : IComparable
     {
         /// <summary>
         /// Идентификатор.
@@ -25,6 +25,16 @@ namespace CakeCRM.Model
         public override string ToString()
         {
             return Name;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Delivery delivery)
+            {
+                return Id.CompareTo(delivery.Id);
+            }
+
+            throw new Exception("Нельзя сравнить два объекта.");
         }
     }
 }

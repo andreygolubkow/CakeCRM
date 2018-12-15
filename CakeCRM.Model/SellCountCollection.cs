@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CakeCRM.Model
 {
-    public class SellCountCollection
+    public class SellCountCollection  : IComparable
     {
         public int Id { get; set; }
 
@@ -18,6 +18,16 @@ namespace CakeCRM.Model
                 stringBuilder.AppendLine($"{sell.Variant.Name}:{sell.Count}");
             }
             return stringBuilder.ToString();
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is SellCountCollection collection)
+            {
+                return Id.CompareTo(collection.Id);
+            }
+
+            throw new Exception("Нельзя сравнить два объекта.");
         }
     }
 }

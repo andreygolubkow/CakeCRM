@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CakeCRM.Model
 {
-    public class Product
+    public class Product : IComparable
     {
         public int Id { get; set; }
 
@@ -17,6 +17,16 @@ namespace CakeCRM.Model
         public override string ToString()
         {
             return Name;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Product product)
+            {
+                return Id.CompareTo(product.Id);
+            }
+
+            throw new Exception("Нельзя сравнить два объекта.");
         }
 
     }

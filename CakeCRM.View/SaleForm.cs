@@ -35,9 +35,22 @@ namespace CakeCRM.View
             
         }
 
+
+
         public Sale Sale
         {
             get { return _sale; }
+            set
+            {
+                _sale = value;
+                _sellCountPairs = _sale.Goods.Sells;
+                sellCountPairBindingSource.DataSource = _sellCountPairs;
+                applyButton.Visible = true;
+                saveSellButton.Visible = false;
+                clientBindingSource.Position = clientBindingSource.IndexOf(_sale.Client);
+                deliveryBindingSource.Position = deliveryBindingSource.IndexOf(_sale.Delivery);
+                saleStatusBindingSource.Position = saleStatusBindingSource.IndexOf(_sale.Status);
+            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -46,10 +59,21 @@ namespace CakeCRM.View
             if (!(double.TryParse(countTextBox.Text, out count))) return;
             if (!(sellVariantBindingSource.Current is SellVariant variant)) return;
             if (!(sellCountPairBindingSource.Current is SellCountPair pair)) return;
-            if (variant.Product.Count < variant.ProductCount * count)
+            var currentPacks = (_sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Sum(p => p.Count));
+            var packCount = variant.Pack.Count - currentPacks;
+            var productCount = variant.Product.Count - _sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Sum(p => p.Count * p.Variant.ProductCount);
+
+
+            if (productCount < variant.ProductCount * count)
             {
 
                 MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round(variant.Product.Count / variant.ProductCount - variant.Product.Count / variant.ProductCount % Math.Pow(10, 0))}");
+                return;
+            }
+            if (packCount < count)
+            {
+
+                MessageBox.Show($@"Недостаточно тары. Доступно: {variant.Pack.Name} - {variant.Pack.Count}");
                 return;
             }
 
@@ -64,10 +88,21 @@ namespace CakeCRM.View
             double count = 0;
             if (!(double.TryParse(countTextBox.Text, out count))) return;
             if (!(sellVariantBindingSource.Current is SellVariant variant)) return;
-            if (variant.Product.Count < variant.ProductCount*count)
+
+            var packCount = variant.Pack.Count - (_sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Count() *
+                        _sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Sum(p => p.Count));
+            var productCount = variant.Product.Count - _sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Sum(p => p.Count*p.Variant.ProductCount);
+
+            if (productCount < variant.ProductCount*count)
             {
 
                 MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round(variant.Product.Count / variant.ProductCount - variant.Product.Count / variant.ProductCount % Math.Pow(10, 0))}");
+                return;
+            }
+            if (packCount < count)
+            {
+
+                MessageBox.Show($@"Недостаточно тары. Доступно: {variant.Pack.Name} - {variant.Pack.Count}");
                 return;
             }
 
@@ -111,6 +146,36 @@ namespace CakeCRM.View
             }
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void applyButton_Click(object sender, EventArgs e)
+        {
+            if (!(clientBindingSource.Current is Client client)) return;
+            if (!(deliveryBindingSource.Current is Delivery delivery)) return;
+            if (!(saleStatusBindingSource.Current is SaleStatus status)) return;
+            if (_sellCountPairs.Count <= 0) return;
+            try
+            {
+                _sale.Client = client;
+                _sale.DateTime = DateTime.Now;
+                _sale.Delivery = delivery;
+                _sale.Status = status;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void sellCountPairBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            if (sellCountPairBindingSource.Current is SellCountPair pair)
+            {
+                countTextBox.Text = pair.Count.ToString();
+                sellVariantBindingSource.Position = sellVariantBindingSource.IndexOf(pair.Variant);
+            }
         }
     }
 }
