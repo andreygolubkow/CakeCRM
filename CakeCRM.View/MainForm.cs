@@ -327,5 +327,42 @@ namespace CakeCRM.View
                 saleBindingSource.ResetBindings(false);
             }
         }
+
+        private void copyClientInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!(saleBindingSource.Current is Sale sale)) return;
+
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("По заказу:");
+            int index = 1;
+            foreach (var variant in sale.Goods.Sells)
+            {
+                builder.AppendLine($"{index}){variant.Variant.Product.Name}");
+                builder.AppendLine($"{variant.Variant.ProductCount} гр. - {variant.Variant.Cost} руб.");
+                if (variant.Count > 1)
+                {
+                    builder.AppendLine($"Количество: {variant.Count}");
+                }
+                index++;
+            }
+
+            builder.AppendLine($"Доставка: {sale.Delivery.Name} ({sale.Delivery.Cost} руб.)");
+            builder.AppendLine($"Итого: {sale.Cost} руб.");
+            
+            Clipboard.SetText(builder.ToString());
+        }
+
+        private void salesGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+           
+        }
+
+        private void salesGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (saleBindingSource.Current is Sale sale)
+            {
+                sellContextMenu.Show(MousePosition.X,MousePosition.Y);
+            }
+        }
     }
 }

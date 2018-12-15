@@ -52,7 +52,6 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.showClientInfoButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.saleStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -60,7 +59,11 @@
             this.newSellButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.balanceText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.editSaleButton = new System.Windows.Forms.Button();
+            this.sellContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.клиентуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyClientInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактироватьЗаказToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.salesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salesGridView)).BeginInit();
@@ -69,6 +72,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saleStatusBindingSource)).BeginInit();
             this.statusStrip.SuspendLayout();
+            this.sellContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -148,7 +152,7 @@
             // removeSaleButton
             // 
             this.removeSaleButton.Name = "removeSaleButton";
-            this.removeSaleButton.Size = new System.Drawing.Size(180, 22);
+            this.removeSaleButton.Size = new System.Drawing.Size(149, 22);
             this.removeSaleButton.Text = "Удалить заказ";
             this.removeSaleButton.Click += new System.EventHandler(this.removeSaleButton_Click);
             // 
@@ -192,6 +196,8 @@
             this.salesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.salesGridView.Size = new System.Drawing.Size(783, 263);
             this.salesGridView.TabIndex = 0;
+            this.salesGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.salesGridView_CellDoubleClick);
+            this.salesGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.salesGridView_MouseDown);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -260,8 +266,6 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.editSaleButton);
-            this.groupBox2.Controls.Add(this.showClientInfoButton);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.listByStatusButton);
             this.groupBox2.Controls.Add(this.newSellButton);
@@ -272,20 +276,10 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Управление";
             // 
-            // showClientInfoButton
-            // 
-            this.showClientInfoButton.Location = new System.Drawing.Point(134, 19);
-            this.showClientInfoButton.Name = "showClientInfoButton";
-            this.showClientInfoButton.Size = new System.Drawing.Size(151, 23);
-            this.showClientInfoButton.TabIndex = 4;
-            this.showClientInfoButton.Text = "Информация клиенту";
-            this.showClientInfoButton.UseVisualStyleBackColor = true;
-            this.showClientInfoButton.Click += new System.EventHandler(this.showClientInfoButton_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.statusComboBox);
-            this.groupBox1.Location = new System.Drawing.Point(497, 13);
+            this.groupBox1.Location = new System.Drawing.Point(340, 19);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(301, 48);
             this.groupBox1.TabIndex = 3;
@@ -312,7 +306,7 @@
             // 
             // listByStatusButton
             // 
-            this.listByStatusButton.Location = new System.Drawing.Point(291, 19);
+            this.listByStatusButton.Location = new System.Drawing.Point(134, 19);
             this.listByStatusButton.Name = "listByStatusButton";
             this.listByStatusButton.Size = new System.Drawing.Size(200, 23);
             this.listByStatusButton.TabIndex = 1;
@@ -353,15 +347,43 @@
             this.balanceText.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.balanceText.DoubleClick += new System.EventHandler(this.balanceText_DoubleClick);
             // 
-            // editSaleButton
+            // sellContextMenu
             // 
-            this.editSaleButton.Location = new System.Drawing.Point(15, 48);
-            this.editSaleButton.Name = "editSaleButton";
-            this.editSaleButton.Size = new System.Drawing.Size(113, 23);
-            this.editSaleButton.TabIndex = 5;
-            this.editSaleButton.Text = "Редактировать";
-            this.editSaleButton.UseVisualStyleBackColor = true;
-            this.editSaleButton.Click += new System.EventHandler(this.editSaleButton_Click);
+            this.sellContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.клиентуToolStripMenuItem,
+            this.редактироватьЗаказToolStripMenuItem});
+            this.sellContextMenu.Name = "sellContextMenu";
+            this.sellContextMenu.Size = new System.Drawing.Size(186, 48);
+            // 
+            // клиентуToolStripMenuItem
+            // 
+            this.клиентуToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showInfoToolStripMenuItem,
+            this.copyClientInfoToolStripMenuItem});
+            this.клиентуToolStripMenuItem.Name = "клиентуToolStripMenuItem";
+            this.клиентуToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.клиентуToolStripMenuItem.Text = "Клиенту";
+            // 
+            // showInfoToolStripMenuItem
+            // 
+            this.showInfoToolStripMenuItem.Name = "showInfoToolStripMenuItem";
+            this.showInfoToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.showInfoToolStripMenuItem.Text = "Показать информацию";
+            this.showInfoToolStripMenuItem.Click += new System.EventHandler(this.showClientInfoButton_Click);
+            // 
+            // copyClientInfoToolStripMenuItem
+            // 
+            this.copyClientInfoToolStripMenuItem.Name = "copyClientInfoToolStripMenuItem";
+            this.copyClientInfoToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.copyClientInfoToolStripMenuItem.Text = "Скопировать в буфер обмена";
+            this.copyClientInfoToolStripMenuItem.Click += new System.EventHandler(this.copyClientInfoToolStripMenuItem_Click);
+            // 
+            // редактироватьЗаказToolStripMenuItem
+            // 
+            this.редактироватьЗаказToolStripMenuItem.Name = "редактироватьЗаказToolStripMenuItem";
+            this.редактироватьЗаказToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.редактироватьЗаказToolStripMenuItem.Text = "Редактировать заказ";
+            this.редактироватьЗаказToolStripMenuItem.Click += new System.EventHandler(this.editSaleButton_Click);
             // 
             // MainForm
             // 
@@ -388,6 +410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.saleStatusBindingSource)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.sellContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,7 +437,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox statusComboBox;
         private System.Windows.Forms.BindingSource saleStatusBindingSource;
-        private System.Windows.Forms.Button showClientInfoButton;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clientDataGridViewTextBoxColumn;
@@ -424,7 +446,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.ToolStripStatusLabel balanceText;
-        private System.Windows.Forms.Button editSaleButton;
+        private System.Windows.Forms.ContextMenuStrip sellContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem клиентуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyClientInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьЗаказToolStripMenuItem;
     }
 }
 

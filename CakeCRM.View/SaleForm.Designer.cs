@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.sellCountGridView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.variantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sellCountPairBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.commentLabel = new System.Windows.Forms.Label();
@@ -58,6 +55,9 @@
             this.saleStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorLabel = new System.Windows.Forms.Label();
             this.applyButton = new System.Windows.Forms.Button();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.variantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sellCountGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sellCountPairBindingSource)).BeginInit();
@@ -103,31 +103,6 @@
             this.sellCountGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.sellCountGridView.Size = new System.Drawing.Size(333, 225);
             this.sellCountGridView.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 2;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // variantDataGridViewTextBoxColumn
-            // 
-            this.variantDataGridViewTextBoxColumn.DataPropertyName = "Variant";
-            this.variantDataGridViewTextBoxColumn.FillWeight = 159.3909F;
-            this.variantDataGridViewTextBoxColumn.HeaderText = "Товар";
-            this.variantDataGridViewTextBoxColumn.Name = "variantDataGridViewTextBoxColumn";
-            this.variantDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countDataGridViewTextBoxColumn
-            // 
-            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
-            this.countDataGridViewTextBoxColumn.FillWeight = 40.60914F;
-            this.countDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
-            this.countDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // sellCountPairBindingSource
             // 
@@ -345,6 +320,31 @@
             this.applyButton.Visible = false;
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.FillWeight = 30.45686F;
+            this.idDataGridViewTextBoxColumn.HeaderText = "Номер";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 2;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // variantDataGridViewTextBoxColumn
+            // 
+            this.variantDataGridViewTextBoxColumn.DataPropertyName = "Variant";
+            this.variantDataGridViewTextBoxColumn.FillWeight = 214.8136F;
+            this.variantDataGridViewTextBoxColumn.HeaderText = "Товар";
+            this.variantDataGridViewTextBoxColumn.Name = "variantDataGridViewTextBoxColumn";
+            this.variantDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countDataGridViewTextBoxColumn
+            // 
+            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
+            this.countDataGridViewTextBoxColumn.FillWeight = 54.72957F;
+            this.countDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
+            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // SaleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,9 +409,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label commentLabel;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Button applyButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn variantDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button applyButton;
     }
 }
