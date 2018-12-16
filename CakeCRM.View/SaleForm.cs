@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +30,7 @@ namespace CakeCRM.View
             _clients = clients;
             clientBindingSource.DataSource = _clients.Local.ToBindingList();
             deliveryBindingSource.DataSource = deliveries.Local.ToBindingList();
+           
             sellVariantBindingSource.DataSource = sellVariants.Local.ToBindingList();
             saleStatusBindingSource.DataSource = statuses.Local.ToBindingList();
             sellCountPairBindingSource.DataSource = _sellCountPairs;
@@ -61,19 +64,22 @@ namespace CakeCRM.View
             if (!(sellCountPairBindingSource.Current is SellCountPair pair)) return;
             var currentPacks = (_sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Sum(p => p.Count));
             var packCount = variant.Pack.Count - currentPacks;
-            var productCount = variant.Product.Count - _sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Sum(p => p.Count * p.Variant.ProductCount);
+            var productCount = variant.Product.Count - _sellCountPairs.Where(p => p.Variant.Product == variant.Product).Sum(p => p.Count * p.Variant.ProductCount);
 
 
-            if (productCount < variant.ProductCount * count)
+            var pairProdCount = pair.Variant.Id == variant.Id ? pair.Variant.ProductCount * pair.Count :0;
+            var pairPackCount = pair.Variant == variant ? pair.Count : 0;
+            if (productCount+ pairProdCount < variant.ProductCount * count)
             {
 
-                MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round(variant.Product.Count / variant.ProductCount - variant.Product.Count / variant.ProductCount % Math.Pow(10, 0))}");
+                //MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round((variant.Product.Count / variant.ProductCount - variant.Product.Count) / variant.ProductCount % Math.Pow(10, 0))}");
+                MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round(variant.Product.Count-productCount)} гр.");
                 return;
             }
-            if (packCount < count)
+            if (packCount + pairPackCount < count)
             {
 
-                MessageBox.Show($@"Недостаточно тары. Доступно: {variant.Pack.Name} - {variant.Pack.Count}");
+                MessageBox.Show($@"Недостаточно тары. Доступно: {variant.Pack.Name} - {variant.Pack.Count-packCount}");
                 return;
             }
 
@@ -81,6 +87,7 @@ namespace CakeCRM.View
             pair.Count = count;
 
             sellCountPairBindingSource.EndEdit();
+            sellCountPairBindingSource.ResetCurrentItem();
         }
 
         private void addNewPairButton_Click(object sender, EventArgs e)
@@ -91,12 +98,12 @@ namespace CakeCRM.View
 
             var packCount = variant.Pack.Count - (_sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Count() *
                         _sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Sum(p => p.Count));
-            var productCount = variant.Product.Count - _sellCountPairs.Where(p => p.Variant.Pack == variant.Pack).Sum(p => p.Count*p.Variant.ProductCount);
+            var productCount = variant.Product.Count - _sellCountPairs.Where(p => p.Variant.Product == variant.Product).Sum(p => p.Count*p.Variant.ProductCount);
 
             if (productCount < variant.ProductCount*count)
             {
 
-                MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round(variant.Product.Count / variant.ProductCount - variant.Product.Count / variant.ProductCount % Math.Pow(10, 0))}");
+                MessageBox.Show($@"Недостаточно товара на складе. Доступно {Math.Round(variant.Product.Count - productCount)}");
                 return;
             }
             if (packCount < count)

@@ -19,8 +19,8 @@ namespace CakeCRM.View
 
         private StringBuilder _balanceMessage = new StringBuilder();
 
-        private const double _minPack = 10;
-        private const double _minProduct = 1000;
+        private const double _minPack = 20;
+        private const double _minProduct = 100;
 
         public MainForm()
         {

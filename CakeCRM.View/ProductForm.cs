@@ -48,6 +48,7 @@ namespace CakeCRM.View
             product.Name = nameTextBox.Text;
             product.Count = count;
             productBindingSource.EndEdit();
+            productBindingSource.ResetCurrentItem();
         }
 
         private void productBindingSource_CurrentChanged(object sender, EventArgs e)

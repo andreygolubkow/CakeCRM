@@ -45,6 +45,7 @@ namespace CakeCRM.View
             delivery.Name = nameTextBox.Text;
             delivery.Cost = cost;
             deliveryBindingSource.EndEdit();
+            deliveryBindingSource.ResetCurrentItem();
         }
 
         private void saveAsNewButton_Click(object sender, EventArgs e)

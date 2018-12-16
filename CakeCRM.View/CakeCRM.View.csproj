@@ -326,6 +326,7 @@
     <Compile Include="SellVariantForm.Designer.cs">
       <DependentUpon>SellVariantForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StringComparer.cs" />
     <EmbeddedResource Include="ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>

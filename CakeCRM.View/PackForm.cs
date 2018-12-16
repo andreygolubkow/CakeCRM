@@ -40,6 +40,7 @@ namespace CakeCRM.View
             pack.Name = nameTextBox.Text;
             pack.Count = count;
             packBindingSource.EndEdit();
+            packBindingSource.ResetCurrentItem();
         }
 
         private void saveAsNewButton_Click(object sender, EventArgs e)

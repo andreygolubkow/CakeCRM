@@ -31,6 +31,7 @@ namespace CakeCRM.View
             client.Communications = contactsTextBox.Text;
             client.Comment = commentTextBox.Text;
             clientBindingSource.EndEdit();
+            clientBindingSource.ResetCurrentItem();
         }
 
         private void clientBindingSource_CurrentChanged(object sender, EventArgs e)

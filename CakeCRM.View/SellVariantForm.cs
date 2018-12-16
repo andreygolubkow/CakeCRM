@@ -33,6 +33,7 @@ namespace CakeCRM.View
         private void saveButton_Click(object sender, EventArgs e)
         {
             sellVariantBindingSource.EndEdit();
+            sellVariantBindingSource.ResetCurrentItem();
         }
 
         private void removeButton_Click(object sender, EventArgs e)
