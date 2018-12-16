@@ -27,10 +27,10 @@ namespace CakeCRM.View
             InitializeComponent();
             //FillData();
             LoadData();
-            if (DateTime.Now.Day != 16)
+            /*if (DateTime.Now.Day != 16)
             {
                 Close();
-            }
+            }*/
 
             CheckBalance();
         }
